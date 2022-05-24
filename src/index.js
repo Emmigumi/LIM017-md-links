@@ -1,9 +1,4 @@
-// import fs from 'fs';
-// import path from 'path';
-import { getArgPathAbsolute } from './util.js';
-
-// isAbsolute = Verifica si la ruta es absoluta
-// resolve = Convierte una ruta relativa en una absoluta
+import { getArgPathAbsolute } from '../src/util.js';
 
 const mdLinks = (argPath, options) => {
 	if (!argPath) {
