@@ -1,4 +1,4 @@
-import { transformPathAbsolute, verifyPathExist, verifyIsFile, verifyIsDirectory, recognizingPathExtension } from '../src/util.js';
+import { transformPathAbsolute, verifyPathExist, verifyIsFile, verifyIsDirectory, recognizePathExtension} from '../src/util.js';
 
 const pathTest =
 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\README.md';
@@ -34,12 +34,12 @@ describe('verifyIsDirectory', () => {
     });
 })
 
-describe('recognizingPathExtension', () => {
+describe('recognizePathExtension', () => {
     const aFile = 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\src\\index.js';
     it('Recognize the type of route extension ', () => {
-        expect(recognizingPathExtension(aFile)).toEqual('.js');
+        expect(recognizePathExtension(aFile)).toEqual('.js');
     });
     it('Recognize the type of route extension', () => {
-        expect(recognizingPathExtension(pathTest)).toEqual('.md');
+        expect(recognizePathExtension(pathTest)).toEqual('.md');
     });
 })
