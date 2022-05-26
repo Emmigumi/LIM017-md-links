@@ -1,4 +1,4 @@
-import { transformPathAbsolute, verifyPathExist, verifyIsFile, verifyIsDirectory, readDirectory, recognizePathExtension, arrayListFile} from '../src/util.js';
+import { transformPathAbsolute, verifyPathExist, verifyIsFile, verifyIsDirectory, readDirectory, recognizePathExtension, arrayListFile, filterbyExtension } from '../src/util.js';
 
 const pathTest =
 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\README.md';
@@ -67,3 +67,20 @@ describe('arrayListFile', () => {
           expect(arrayListFile('md-file')).toEqual(prueba);
       })
 })
+
+describe('filterbyExtension', () => {
+    const prueba = [
+        'md-file\\example1.md',
+        'md-file\\example2.js',
+        'md-file\\Files\\example3.md',
+        'md-file\\Files\\example4.js'
+      ];
+
+	const result = [
+		'md-file\\example1.md',
+		'md-file\\Files\\example3.md',
+	];
+	it('Filter files by .md extension', () => {
+		expect(filterbyExtension(prueba)).toEqual(result);
+	});
+});
