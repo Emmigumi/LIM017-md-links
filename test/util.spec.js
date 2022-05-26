@@ -1,4 +1,4 @@
-import { transformPathAbsolute, verifyPathExist, verifyIsFile, verifyIsDirectory, recognizePathExtension} from '../src/util.js';
+import { transformPathAbsolute, verifyPathExist, verifyIsFile, verifyIsDirectory, readDirectory, recognizePathExtension, arrayListFile, filterbyExtension } from '../src/util.js';
 
 const pathTest =
 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\README.md';
@@ -27,12 +27,24 @@ describe('verifyIsFile', () => {
 })
 describe('verifyIsDirectory', () => {
     it('If is a directory: return true', () => {
-        expect(verifyIsDirectory(file)).toEqual(true);
+        expect(verifyIsDirectory('./md-file')).toEqual(true);
     });
     it('If is not a directory: return false', () => {
         expect(verifyIsDirectory(pathTest)).toEqual(false);
     });
 })
+
+describe('readDirectory', () => {
+	const FirstDirectoryTest = [
+        'example1.md',
+        'example2.js',
+        'Files',
+	];
+	it('verify that is directory', () => {
+	expect(readDirectory('./md-file')).toEqual(FirstDirectoryTest);
+	})
+});
+
 
 describe('recognizePathExtension', () => {
     const aFile = 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\src\\index.js';
@@ -43,3 +55,32 @@ describe('recognizePathExtension', () => {
         expect(recognizePathExtension(pathTest)).toEqual('.md');
     });
 })
+
+describe('arrayListFile', () => {
+    const prueba = [
+        'md-file\\example1.md',
+        'md-file\\example2.js',
+        'md-file\\Files\\example3.md',
+        'md-file\\Files\\example4.js'
+      ];
+      it('Traverse the directory return list of File', () =>{
+          expect(arrayListFile('md-file')).toEqual(prueba);
+      })
+})
+
+describe('filterbyExtension', () => {
+    const prueba = [
+        'md-file\\example1.md',
+        'md-file\\example2.js',
+        'md-file\\Files\\example3.md',
+        'md-file\\Files\\example4.js'
+      ];
+
+	const result = [
+		'md-file\\example1.md',
+		'md-file\\Files\\example3.md',
+	];
+	it('Filter files by .md extension', () => {
+		expect(filterbyExtension(prueba)).toEqual(result);
+	});
+});
