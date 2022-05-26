@@ -16,14 +16,14 @@ export const verifyIsDirectory = (argPath) => fs.lstatSync(argPath).isDirectory(
 // 5. Identifiar la extensión de la ruta
 export const recognizePathExtension = (argPath) => path.extname(argPath);
 // 6. Permite leer los archivos de un directorio retornadolos en un array
-const readDirectory = (argPath) => fs.readdirSync(argPath);
+export const readDirectory = (argPath) => fs.readdirSync(argPath);
+// console.log(read)
 // 7. Recorrer el directorio
 export const arrayListFile = (argPath) => {
 	 let arrayList = [];
 	if(verifyIsDirectory(argPath) === false){
 		arrayList.push(argPath);
 	}
-
     else {
         readDirectory(argPath).forEach(file => {
            const filePath = path.join(argPath, file);
@@ -32,7 +32,7 @@ export const arrayListFile = (argPath) => {
             }
         return arrayList;
 }
-console.log(arrayListFile(process.argv[2]));
+// console.log(arrayListFile(process.argv[2]));
 
 
 // 8. Identificar la extención de tipo .md
