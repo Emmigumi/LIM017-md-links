@@ -40,37 +40,29 @@ export const filterbyExtension = arrayList => {
 };
 // console.log(filterbyExtension(arrayListFile(process.argv[2])));
 
-
-
-
-
-
-
-
-
-
-
-
-// 8. Identificar la extención de tipo .md
-//
-/*
-export const filterMdFiles = (argPath) => {
-	const arrayExtensionsMd = [];
-	if(verifyIsDirectory(argPath) === true && recognizingPathExtension(argPath) === '.md'){
-    return arrayExtensionsMd.push(argPath);
-	}
-	else {return fs.readdirSync(argPath)}
-}
-console.log(filterMdFiles(process.argv[2])); */
-
-
-// 7. Permite leer el contenido de un archivo
-/* export const fileContentShow = (argPath) => { fs.readFile(argPath,'utf-8', (err, data) => {
-    if (err) throw err;
-    else{console.log(data)};
-	});
+// 9. Permite obtener los links de los archivos
+export const searchingLinks = argPath => {
+    const arrayListAll = arrayListFile(argPath);
+    const arrayListMd = filterbyExtension(arrayListAll);
+    /* const read = readFiles(); */
+    // console.log('mundo', arrayLisMd);
+    // let arrayList2 = [];
+    arrayListMd.forEach(fileMd => {
+        const newArray = fs.readFileSync(fileMd, 'utf8');
+        console.log('Jammie', newArray);
+    });
 };
-console.log(fileContentShow(process.argv[2])); */
+console.log('holi', searchingLinks(process.argv[2]));
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -103,22 +95,4 @@ console.log(fileContentShow(process.argv[2])); */
   });
 }
 verifyPathExist(process.argv[2]); */
-
-/* TRY3 RECORRER DIRECTORIO */
-/* function recursivelyDelete(filePath) {
-    // check if directory or file
-    const stats = fs.statSync(filePath);
-    // if file unlinkSync
-    if (stats.isFile()) {
-     fs.readdirSync(filePath);
-    }
-    // if directory, readdir and call recursivelyDelete for each file
-    else {
-     const files = fs.readdirSync(filePath);
-     files.forEach((file) => {
-      recursivelyDelete(path.join(filePath, file));
-     });
-     fs.rmdirSync(filePath);
-    }
-   } */
 
