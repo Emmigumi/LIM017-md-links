@@ -40,37 +40,65 @@ export const filterbyExtension = arrayList => {
 };
 // console.log(filterbyExtension(arrayListFile(process.argv[2])));
 
-
-
-
-
-
-
-
-
-
-
-
-// 8. Identificar la extención de tipo .md
-//
-/*
-export const filterMdFiles = (argPath) => {
-	const arrayExtensionsMd = [];
-	if(verifyIsDirectory(argPath) === true && recognizingPathExtension(argPath) === '.md'){
-    return arrayExtensionsMd.push(argPath);
-	}
-	else {return fs.readdirSync(argPath)}
+// 9. Permite obtener los links de los archivos
+export const searchingLinks = argPath => {
+    const arrayListAll = arrayListFile(argPath);
+    const arrayListMd = filterbyExtension(arrayListAll);
+    const fullLinkOnlyRegex = /\[(.*)\]\(((?:\/|https?:\/\/).*)\)/gm;
+    const regExpURL = /\(((?:\/|https?:\/\/).*)\)/g;
+    const regExpText = /\[(.*)\]/g;
+    // console.log('mundo', arrayLisMd);
+    // let arrayList2 = [];
+    if (arrayListMd.length > 0) { arrayListMd.forEach( fileMd => {
+      const readContentFile = fs.readFileSync(fileMd, 'utf8');
+      const getLinks = readContentFile.match(fullLinkOnlyRegex);
+      const rootFile = fileMd;
+      console.log('rooot', rootFile);
+      if(getLinks){
+        const destructureLink = getLinks.map(link => {
+        const onlyLinkReturn = link.match(regExpURL).join().slice(1,-1);
+        const onlyTextReturn = link.match(regExpText).join().slice(1,-1).substring(0,50);
+        const object = {
+        href: onlyLinkReturn,
+        text: onlyTextReturn,
+        file: transformPathAbsolute(fileMd),
+        };
+        console.log('dos', object);
+        });
+      }
+      return console.log('ONE', getLinks);
+    })
 }
-console.log(filterMdFiles(process.argv[2])); */
-
-
-// 7. Permite leer el contenido de un archivo
-/* export const fileContentShow = (argPath) => { fs.readFile(argPath,'utf-8', (err, data) => {
-    if (err) throw err;
-    else{console.log(data)};
-	});
 };
-console.log(fileContentShow(process.argv[2])); */
+console.log('holi', searchingLinks(process.argv[2]));
+/* codigo rejex */
+// const fullLinkOnlyRegex = /^\[([\w\s\d]+)\]\((https?:\/\/[\w\d./?=#]+)\)$/
+
+/* Match full links and relative paths */
+/* const regex = /^\[([\w\s\d]+)\]\(((?:\/|https?:\/\/)[\w\d./?=#]+)\)$/
+
+const string = "[View the analytics docs](https://getanalytics.io/)"
+
+const myMatch = string.match(regex)
+
+console.log(myMatch)
+
+const [ full, text, url ] = myMatch
+
+console.log(text)
+
+
+console.log(url) */
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -103,22 +131,4 @@ console.log(fileContentShow(process.argv[2])); */
   });
 }
 verifyPathExist(process.argv[2]); */
-
-/* TRY3 RECORRER DIRECTORIO */
-/* function recursivelyDelete(filePath) {
-    // check if directory or file
-    const stats = fs.statSync(filePath);
-    // if file unlinkSync
-    if (stats.isFile()) {
-     fs.readdirSync(filePath);
-    }
-    // if directory, readdir and call recursivelyDelete for each file
-    else {
-     const files = fs.readdirSync(filePath);
-     files.forEach((file) => {
-      recursivelyDelete(path.join(filePath, file));
-     });
-     fs.rmdirSync(filePath);
-    }
-   } */
 

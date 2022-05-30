@@ -8,3 +8,5 @@ const mdLinks = (argPath, options) => {
 	return console.log(transformPathAbsolute(argPath));
 };
 mdLinks(process.argv[2]);
+
+
