@@ -40,56 +40,35 @@ export const filterbyExtension = arrayList => {
 };
 // console.log(filterbyExtension(arrayListFile(process.argv[2])));
 
-// 9. Permite obtener los links de los archivos
+// 9. Permite obtener los links de los archivos y el array con href, text, file
 export const searchingLinks = argPath => {
     const arrayListAll = arrayListFile(argPath);
     const arrayListMd = filterbyExtension(arrayListAll);
     const fullLinkOnlyRegex = /\[(.*)\]\(((?:\/|https?:\/\/).*)\)/gm;
     const regExpURL = /\(((?:\/|https?:\/\/).*)\)/g;
     const regExpText = /\[(.*)\]/g;
-    // console.log('mundo', arrayLisMd);
-    // let arrayList2 = [];
-    if (arrayListMd.length > 0) { arrayListMd.forEach( fileMd => {
-      const readContentFile = fs.readFileSync(fileMd, 'utf8');
-      const getLinks = readContentFile.match(fullLinkOnlyRegex);
-      const rootFile = fileMd;
-      console.log('rooot', rootFile);
-      if(getLinks){
-        const destructureLink = getLinks.map(link => {
-        const onlyLinkReturn = link.match(regExpURL).join().slice(1,-1);
-        const onlyTextReturn = link.match(regExpText).join().slice(1,-1).substring(0,50);
-        const object = {
-        href: onlyLinkReturn,
-        text: onlyTextReturn,
-        file: transformPathAbsolute(fileMd),
-        };
-        console.log('dos', object);
-        });
-      }
-      return console.log('ONE', getLinks);
-    })
-}
-};
-console.log('holi', searchingLinks(process.argv[2]));
-/* codigo rejex */
-// const fullLinkOnlyRegex = /^\[([\w\s\d]+)\]\((https?:\/\/[\w\d./?=#]+)\)$/
-
-/* Match full links and relative paths */
-/* const regex = /^\[([\w\s\d]+)\]\(((?:\/|https?:\/\/)[\w\d./?=#]+)\)$/
-
-const string = "[View the analytics docs](https://getanalytics.io/)"
-
-const myMatch = string.match(regex)
-
-console.log(myMatch)
-
-const [ full, text, url ] = myMatch
-
-console.log(text)
-
-
-console.log(url) */
-
+    let arrayList2 = [];
+    if (arrayListMd.length > 0) {
+      arrayListMd.forEach(fileMd => {
+        const readContentFile = fs.readFileSync(fileMd, 'utf8');
+        const getLinks = readContentFile.match(fullLinkOnlyRegex);
+        if (getLinks) {
+          const destructureLink = getLinks.map(link => {
+            const onlyLinkReturn = link.match(regExpURL).join().slice(1, -1);
+            const onlyTextReturn = link.match(regExpText).join().slice(1, -1).substring(0, 50);
+            return { /* esta fx flecha permite retornar un objeto sin necesidad de declararlo */
+              href: onlyLinkReturn,
+              text: onlyTextReturn,
+              file: transformPathAbsolute(fileMd),
+            };
+          });
+          arrayList2 = arrayList2.concat(destructureLink);
+        }
+      });
+      return arrayList2;
+    }
+  };
+// console.log('holi', searchingLinks(process.argv[2]));
 
 
 
