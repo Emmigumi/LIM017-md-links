@@ -1,6 +1,7 @@
 import { transformPathAbsolute} from '../src/util.js';
 
 const mdLinks = (argPath, options) => {
+
 	if (!argPath) {
 		// console.log('no hay path');
 		return console.log('Ingrese un path');
@@ -10,3 +11,4 @@ const mdLinks = (argPath, options) => {
 mdLinks(process.argv[2]);
 
 
+// Avanzar elaborando con una promesa

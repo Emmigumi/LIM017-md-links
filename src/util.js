@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+// import fetch from 'node-fetch';
 
 // 1. Convertir una ruta relativa en absoluta
 // isAbsolute: Verifica si la ruta es absoluta // resolve: Convierte una ruta relativa en una absoluta
@@ -70,6 +71,11 @@ export const searchingLinks = argPath => {
   };
 // console.log('holi', searchingLinks(process.argv[2]));
 
+// 10.Uso de fecth para mostrar el estado de los links
+
+/* export const stateLinks = () => {
+  
+} */
 
 
 

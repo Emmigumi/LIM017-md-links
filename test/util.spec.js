@@ -69,7 +69,8 @@ describe('arrayListFile', () => {
 		'md-file\\example2.js',
 		'md-file\\Files\\example3.md',
 		'md-file\\Files\\example4.js',
-	];
+		'md-file\\Files\\example5.md'
+	  ];
 	it('Traverse the directory return list of File', () => {
 		expect(arrayListFile('md-file')).toEqual(prueba);
 	});
