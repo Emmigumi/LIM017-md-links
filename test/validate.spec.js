@@ -41,11 +41,34 @@ const linkValidate = [
         message: 'FAIL'
       }
 ];
-fetch.mockImplementation( ()=>{
+fetch.mockImplementation(()=>{
     return getStatusLinks(arrayInitial).then(response => {
         expect(response).toEqual(linkValidate);
       });
 })
+})
+it('If status = 500-Promise reject', () => {
+    const arrayInitial = [
+        {
+            href: 'https://devel.mozia.og/es/docs/Web/JavaScript/Reference/Gobal_Objects/Array/forEach',
+            text: 'Array.prototype.forEach() - MDN',
+            file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\example1.md',
+        }
+    ];
+    const linkValidate = [
+        {
+            href: 'https://devel.mozia.og/es/docs/Web/JavaScript/Reference/Gobal_Objects/Array/forEach',
+            text: 'Array.prototype.forEach() - MDN',
+            file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\example1.md',
+            status: 500,
+            message: 'Fail'
+          }
+    ];
+    fetch.mockRejectedValue()
+        return getStatusLinks(arrayInitial).catch(err => {
+            expect(err).toEqual(linkValidate);
+          });
+    
+})
 
-})
-})
+});

@@ -46,7 +46,7 @@ describe('verifyIsDirectory', () => {
 });
 
 describe('readDirectory', () => {
-	const FirstDirectoryTest = ['example1.md', 'example2.js', 'Files'];
+	const FirstDirectoryTest = ['example1.md', 'example2.js', 'Files', "files-out",];
 	it('verify that is directory', () => {
 		expect(readDirectory('./md-file')).toEqual(FirstDirectoryTest);
 	});
