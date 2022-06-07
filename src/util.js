@@ -74,6 +74,66 @@ export const searchingLinks = argPath => {
 };
 // console.log('holi', searchingLinks(process.argv[2]));
 
+// 11. Return de option: stats
+export const infoStats = (arrayListOfValidate) => {
+	const uniqueLinks = new Set(arrayListOfValidate.map((element) => element.href));
+	console.log(`Total Links: ${arrayListOfValidate.length} \nUnique Links:  ${uniqueLinks.size}`);
+}
+
+export const totalInfo = (arrayListOfValidate) => {
+const brokenLinks = arrayListOfValidate.filter((element) => element.message === 'Fail');
+const uniqueLinks = new Set(arrayListOfValidate.map((element) => element.href));
+console.log(`Total Links: ${arrayListOfValidate.length} \nUnique Links:  ${uniqueLinks.size} \nBroken Links:  ${brokenLinks.size}`);
+}
+const jam = [
+	{
+	  href: 'https://es.wikipedia.org/wiki/Markdown',
+	  text: 'Markdown',
+	  file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\example1.md',
+	  status: 200,
+	  message: 'Ok'
+	},
+	{
+	  href: 'https://devel.mozia.og/es/docs/Web/JavaScript/Reference/Gobal_Objects/Array/forEach',
+	  text: 'Array.prototype.forEach() - MDN',
+	  file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\example1.md',
+	  status: 500,
+	  message: 'Fail'
+	},
+	{
+	  href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/sort',
+	  text: 'Reflexiona y luego marca los objetivos que has lle',
+	  file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\Files\\example3.md',
+	  status: 200,
+	  message: 'Ok'
+	},
+	{
+	  href: 'https://devel.mozia.og/es/docs/Web/JavaScript/Reference/Gobal_Objects/Array/forEach',
+	  text: 'Array.prototype.forEach() - MDN',
+	  file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\Files\\example3.md',
+	  status: 500,
+	  message: 'Fail'
+	}
+  ];
+console.log(infoStats(jam));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------------------------------------ */
 // 1. Verificar que la ruta existanta 1

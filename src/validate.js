@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 // 10. Permite obtener el estado de cada uno de mis links
 // queremos un nuevo array con el status de mis links
 export const getStatusLinks = arrayLinks => {
-	const array = arrayLinks.map(object =>
+	const arrayWithStatusLinks = arrayLinks.map(object =>
 		fetch(object.href)
 			.then((response) => {
 				if (response.status >= 200 && response.status < 400) {
@@ -22,9 +22,9 @@ export const getStatusLinks = arrayLinks => {
 				return object
 			})
 	)
-	return Promise.all(array)/* .then(value => {
+	return Promise.all(arrayWithStatusLinks).then(value => {
 		console.log(value);
-	}); */
+	});
 }
 
 /* const arr = [
@@ -49,5 +49,6 @@ export const getStatusLinks = arrayLinks => {
 		file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\Files\\example3.md',
 	},
 ];
+ 
+ console.log(getStatusLinks(arr));
  */
-// console.log(getStatusLinks(arr));
