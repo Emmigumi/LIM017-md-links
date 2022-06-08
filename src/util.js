@@ -74,32 +74,16 @@ export const searchingLinks = argPath => {
 };
 // console.log('holi', searchingLinks(process.argv[2]));
 
-
-/* ------------------------------------------------ */
-// 1. Verificar que la ruta existanta 1
-/* export const verifyPathExist = argPath => {
-    const pathFile = fs.statSync(argPath)
-    if(pathFile.isFile() === true) {
-        console.log('Is a File');
-    }
-    else if(pathFile.isDirectory() === true) {
-        console.log('is a directory');
-    }
-};
-    verifyPathExist(process.argv[2] */
-/* 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\README.md' */
-//  );
-// 1.a Verificar que la ruta exista en nuestro boilerplate 2
-/* export const verifyPathExist = (argPath) => { fs.stat(argPath, (error, stats) => {
-    if (error) {
-      console.log('No such file or directory');
-    }
-    else if (stats.isFile() === true) {
-        console.log("Is a file");
-    }
-    else if(stats.isDirectory() === true) {
-        console.log("Is a directory");
-    }
-  });
+// 11. Return de option: stats y total
+export const infoStats = (arrayListOfValidate) => {
+	const uniqueLinks = new Set(arrayListOfValidate.map((element) => element.href));
+	const result = `Total Links: ${arrayListOfValidate.length} \nUnique Links:  ${uniqueLinks.size}`;
+	return result;
 }
-verifyPathExist(process.argv[2]); */
+
+export const totalInfo = (arrayListOfValidate) => {
+const brokenLinks = new Set(arrayListOfValidate.filter((element) => element.message === 'Fail'));
+const uniqueLinks = new Set(arrayListOfValidate.map((element) => element.href));
+const totalResult = `Total Links: ${arrayListOfValidate.length} \nUnique Links:  ${uniqueLinks.size} \nBroken Links:  ${brokenLinks.size}`;
+return totalResult;
+}

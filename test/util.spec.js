@@ -8,6 +8,8 @@ import {
 	arrayListFile,
 	filterbyExtension,
 	searchingLinks,
+	infoStats,
+	totalInfo,
 } from '../src/util.js';
 
 const pathTest =
@@ -46,7 +48,12 @@ describe('verifyIsDirectory', () => {
 });
 
 describe('readDirectory', () => {
-	const FirstDirectoryTest = ['example1.md', 'example2.js', 'Files', "files-out",];
+	const FirstDirectoryTest = [
+		'example1.md',
+		'example2.js',
+		'Files',
+		'files-out',
+	];
 	it('verify that is directory', () => {
 		expect(readDirectory('./md-file')).toEqual(FirstDirectoryTest);
 	});
@@ -91,21 +98,69 @@ describe('filterbyExtension', () => {
 
 describe('searchingLinks', () => {
 	const fourthArrayTest = [
-        {
-          href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/sort',
-          text: 'Reflexiona y luego marca los objetivos que has lle',
-          file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\Files\\example3.md'       
-        },
-        {
-          href: 'https://devel.mozia.og/es/docs/Web/JavaScript/Reference/Gobal_Objects/Array/forEach',
-          text: 'Array.prototype.forEach() - MDN',
-          file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\Files\\example3.md'       
-        }
-      ]
+		{
+			href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/sort',
+			text: 'Reflexiona y luego marca los objetivos que has lle',
+			file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\Files\\example3.md',
+		},
+		{
+			href: 'https://devel.mozia.og/es/docs/Web/JavaScript/Reference/Gobal_Objects/Array/forEach',
+			text: 'Array.prototype.forEach() - MDN',
+			file: 'C:\\Users\\Jammie\\OneDrive\\Escritorio\\PX1-CIPHER\\LIM017-md-links\\md-file\\Files\\example3.md',
+		},
+	];
 	it('Searching links and get object', () => {
 		expect(searchingLinks('./md-file/Files')).toEqual(fourthArrayTest);
 	});
 	it('If there is not link, return empty object', () => {
 		expect(searchingLinks('./notlinks')).toEqual([]);
+	});
+});
+
+describe('Get infoStats to file', () => {
+	const bri = [
+		{
+			href: 'https://www.google.com/',
+			text: '1° link',
+			file: 'C:\\Users\\almen\\OneDrive\\Escritorio\\Proyectos Laboratoria\\LIM017-md-links\\files\\archivo0.md',
+			status: 200,
+			message: 'Ok',
+		},
+		{
+			href: 'https://www.googl.com/',
+			text: '2° link',
+			file: 'C:\\Users\\almen\\OneDrive\\Escritorio\\Proyectos Laboratoria\\LIM017-md-links\\files\\archivo0.md',
+			status: 500,
+			message: 'Fail',
+		},
+	];
+
+	const result = `Total Links: ${2} \nUnique Links:  ${2}`;
+	it('Get infoStats', () => {
+		expect(infoStats(bri)).toEqual(result);
+	});
+});
+
+describe('Get totalInfo to file', () => {
+	const bri = [
+		{
+			href: 'https://www.google.com/',
+			text: '1° link',
+			file: 'C:\\Users\\almen\\OneDrive\\Escritorio\\Proyectos Laboratoria\\LIM017-md-links\\files\\archivo0.md',
+			status: 200,
+			message: 'Ok',
+		},
+		{
+			href: 'https://www.googl.com/',
+			text: '2° link',
+			file: 'C:\\Users\\almen\\OneDrive\\Escritorio\\Proyectos Laboratoria\\LIM017-md-links\\files\\archivo0.md',
+			status: 500,
+			message: 'Fail',
+		},
+	];
+
+	const result = `Total Links: ${2} \nUnique Links:  ${2} \nBroken Links:  ${1}`;
+	it('Get totalInfo', () => {
+		expect(totalInfo(bri)).toEqual(result);
 	});
 });
