@@ -1,5 +1,5 @@
+/* eslint-disable yoda */
 import fetch from 'node-fetch';
-
 // 10. Permite obtener el estado de cada uno de mis links
 // queremos un nuevo array con el status de mis links
 export const getStatusLinks = arrayLinks => {

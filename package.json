@@ -1,12 +1,20 @@
 {
-	"name": "lim017-md-links",
+	"name": "@jamm/md-links",
 	"version": "0.1.0",
 	"type": "module",
 	"engines": {
 		"node": ">=14.x"
 	},
-	"description": "* [1. Preámbulo](#1-preámbulo)\r * [2. Resumen del proyecto](#2-resumen-del-proyecto)\r * [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)\r * [4. Consideraciones generales](#4-consideraciones-generales)\r * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)\r * [6. Entregables](#6-entregables)\r * [7. Hacker edition](#7-hacker-edition)\r * [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)\r * [9. Checklist](#9-checklist)\r * [10. Achicando el problema](#10-achicando-el-problema)",
-	"main": "index.js",
+	"description": "Interfaz de línea de comando (CLI) que permite validar las URLs en los archivos markdown, recibe una ruta como argumento, analiza el archivo e imprime las URLs que encuentre.",
+	"keywords": [
+		"md-links",
+		"markdown",
+		"CLI",
+		"command-line interface",
+		"links",
+		"path"
+	],
+	"main": "src/index.js",
 	"directories": {
 		"test": "test"
 	},
@@ -16,10 +24,10 @@
 		"lint": "eslint --fix . --ext .js"
 	},
 	"repository": {
-		"type": "git",
+		"type": "string",
 		"url": "git+https://github.com/Emmigumi/LIM017-md-links.git"
 	},
-	"author": "Jammie Hurtado",
+	"author": "Jammie Hurtado <20160133@lamolina.edu.pe>",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/Emmigumi/LIM017-md-links/issues"
@@ -39,6 +47,6 @@
 	},
 	"dependencies": {
 		"jest": "^28.1.0",
-		"node-fetch": "^3.2.5"
+		"node-fetch": "^3.2.4"
 	}
 }
