@@ -21,6 +21,9 @@
 	},
 	"author": "Jammie Hurtado",
 	"license": "ISC",
+	"bin":{
+		"md-links": "cli.js"
+	},
 	"bugs": {
 		"url": "https://github.com/Emmigumi/LIM017-md-links/issues"
 	},
