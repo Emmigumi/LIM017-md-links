@@ -46,6 +46,7 @@
 		"prettier": "^2.6.2"
 	},
 	"dependencies": {
+		"chalk": "^5.0.1",
 		"jest": "^28.1.0",
 		"node-fetch": "^3.2.4"
 	}
