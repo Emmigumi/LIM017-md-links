@@ -11,7 +11,7 @@ if(inputArgPath) {
     if(inputsTerminal.length === 3){
         mdLinks(inputArgPath, { validate: false, stats: false })
         .then((res)=>{res.forEach((e)=>{
-            const answerCli = `${e.file} /n${chalk.blue(e.href)} /n${e.text}`;
+            const answerCli = console.log(`\n${e.file} \n${chalk.blue(e.href)} \n${e.text}`);
          return answerCli;
     })})
     .catch((err)=>console.log(err));
@@ -19,7 +19,7 @@ if(inputArgPath) {
         if (options.includes('--validate')){
             mdLinks(inputArgPath, { validate: true, stats: false })
             .then((res)=>{res.forEach((e)=>{
-              const answerCli = console.log(`${e.file} /n${chalk.blue(e.href)} /n${chalk.yellow(e.message)} /n${chalk.magenta(e.status)}  /n${e.text}`);
+              const answerCli = console.log(`\n${e.file} \n ${chalk.blue(e.href)} \n ${chalk.yellow(e.message)} \n ${chalk.magenta(e.status)}  \n${e.text}`);
             return answerCli;
         })})
         .catch((err)=>console.log(err));
