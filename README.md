@@ -12,7 +12,7 @@
 
 Librería que permite analizar los links que se encuentran en archivos de formato Markdown de cada directorio, obteniendo la información del estado, la cantidad total, la cantidad no repetida de los links y la cantidad de enlaces rotas.
 
-![Markdown](https://css-tricks.com/wp-content/uploads/2016/01/choose-markdown.jpg)
+![Markdown](MD-LINKS.png)
 ---
 ## 2. 👩‍💻 Instalación
 
@@ -46,11 +46,11 @@ Y las opciones son las siguientes:
 ---
 ## 4. Diagrama de flujo
 
-![Diagrama de flujo]("diagrama.png")
+![Diagrama de flujo](diagrama-flujo.png)
 ---
 ## 5. 🛠 Skills
 _Javascript, Nodejs_
-### Library
+## 6. Libraries
 Fetch, Chalk, File system, Path.
 ### 🚀 Autor
 - [@JammieHurtado](https://github.com/Emmigumi)
