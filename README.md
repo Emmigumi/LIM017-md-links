@@ -12,7 +12,7 @@
 
 Librería que permite analizar los links que se encuentran en archivos de formato Markdown de cada directorio, obteniendo la información del estado, la cantidad total, la cantidad no repetida de los links y la cantidad de enlaces rotas.
 
-![Markdown](https://css-tricks.com/wp-content/uploads/2016/01/choose-markdown.jpg) es un lenguaje de marcado
+![Markdown](https://css-tricks.com/wp-content/uploads/2016/01/choose-markdown.jpg)
 ---
 ## 2. 👩‍💻 Instalación
 
@@ -33,8 +33,6 @@ node src/cli.js <path-to-file> [options]
 Donde la ruta ingresada puede ser **relativa** o **absoluta**.
 Y las opciones son las siguientes:
 **--validate**, **--stats** o **ambas**.
-
-  - [Manual Mocks con Jest - Documentación oficial](https://jestjs.io/docs/es-ES/manual-mocks)
 ### Detalle
 
 `md-links <path-to-file>`: Analiza el archivo Markdown e imprime de forma ordenada primero la ruta del archivo en el que haya links, la url de estos y el texto que exista dentro del link.
@@ -44,15 +42,16 @@ Y las opciones son las siguientes:
 `md-links <path-to-file> --stats`: Retorna un texto con el número total(Total) de links encontrados y el número de links únicos(Unique).
 
 `md-links <path-to-file> --stats --validate`: retorna un texto con el número total(Total) de links encontrados, el número de links únicos(Unique) y el número de links rotos(Broken).
+
 ---
 ## 4. Diagrama de flujo
 
-![Diagrama de flujo]("MD Links-Page-4.drawio.png")
+![Diagrama de flujo]("diagrama.png")
 ---
 ## 5. 🛠 Skills
 _Javascript, Nodejs_
 ### Library
 Fetch, Chalk, File system, Path.
 ### 🚀 Autor
-- [@Jammie Hurtado](https://github.com/Emmigumi)
+- [@JammieHurtado](https://github.com/Emmigumi)
 
