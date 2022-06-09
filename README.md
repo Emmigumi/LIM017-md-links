@@ -2,43 +2,57 @@
 
 ## Índice
 
-- [1. Preámbulo](#1-preámbulo)
-- [2. Resumen del proyecto](#2-resumen-del-proyecto)
-- [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
-- [4. Consideraciones generales](#4-consideraciones-generales)
-
+- [1. Definición del proyecto](MD-LINKS.png.#1-definición-del-proyecto)
+- [2. Instalación](#2-instalación)
+- [3. Guía de uso](#3-guía-de-uso)
+- [4. Consideraciones generales](#4-diagrama-de-flujo)
+- [5. Construido con](#5-construido-con)
 ---
+## 1. Definición del proyecto
 
-## 1. Preámbulo
+Librería que permite analizar los links que se encuentran en archivos de formato Markdown de cada directorio, obteniendo la información del estado, la cantidad total, la cantidad no repetida de los links y la cantidad de enlaces rotas.
 
-[Markdown](https://es.wikipedia.org/wiki/Markdown) es un lenguaje de marcado
+![Markdown](https://css-tricks.com/wp-content/uploads/2016/01/choose-markdown.jpg) es un lenguaje de marcado
+---
+## 2. 👩‍💻 Instalación
 
-![md-links](https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg)
+Instalar md-links con el siguiente comando:
 
-## 2. Resumen del proyecto
+```bash
+$ npm i md-links-jammie
+```
+---
+## 3. Guía de uso
+### Ejecución
 
-(`process.env`, `process.args`, ...), cómo interactuar con el sistema archivos,
-cómo hacer consultas de red, etc.
+A travéz de la **terminal**
 
-[Node.js](https://nodejs.org/es/) es un entorno de ejecución para JavaScript
-construido con el [motor de JavaScript V8 de Chrome](https://developers.google.com/v8/).
-
-_módulos_ 
-## 3. Objetivos de aprendizaje
-### JavaScript
-
-**Funciones (params, args, return)**
+```bash
+node src/cli.js <path-to-file> [options]
+```
+Donde la ruta ingresada puede ser **relativa** o **absoluta**.
+Y las opciones son las siguientes:
+**--validate**, **--stats** o **ambas**.
 
   - [Manual Mocks con Jest - Documentación oficial](https://jestjs.io/docs/es-ES/manual-mocks)
-### Node.js
+### Detalle
 
-- **process (env, argv, stdin-stdout-stderr, exit-code)**
-### Control de Versiones (Git y GitHub)
+`md-links <path-to-file>`: Analiza el archivo Markdown e imprime de forma ordenada primero la ruta del archivo en el que haya links, la url de estos y el texto que exista dentro del link.
 
-### HTTP
+`md-links <path-to-file> --validate`: Se hace una petición HTTP para averiguar si el link funciona o no y retorna la información. Valida que estado tiene el link, devolviendo el status (entre 200 y 400 devuelve Ok, mayor a 400 devuelve fail) y ok o file respectivamente.
 
+`md-links <path-to-file> --stats`: Retorna un texto con el número total(Total) de links encontrados y el número de links únicos(Unique).
 
-## 4. Consideraciones generales
+`md-links <path-to-file> --stats --validate`: retorna un texto con el número total(Total) de links encontrados, el número de links únicos(Unique) y el número de links rotos(Broken).
+---
+## 4. Diagrama de flujo
 
-- Para este proyecto **no está permitido** utilizar `async/await`.
+![Diagrama de flujo]("MD Links-Page-4.drawio.png")
+---
+## 5. 🛠 Skills
+_Javascript, Nodejs_
+### Library
+Fetch, Chalk, File system, Path.
+### 🚀 Autor
+- [@Jammie Hurtado](https://github.com/Emmigumi)
 
