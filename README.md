@@ -12,7 +12,6 @@
 
 Librería que permite analizar los links que se encuentran en archivos de formato Markdown de cada directorio, obteniendo la información del estado, la cantidad total, la cantidad no repetida de los links y la cantidad de enlaces rotas.
 
-![Markdown](MD-LINKS.png)
 ---
 ## 2. 👩‍💻 Instalación
 
