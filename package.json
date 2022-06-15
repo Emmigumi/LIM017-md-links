@@ -27,6 +27,9 @@
 		"type": "string",
 		"url": "git+https://github.com/Emmigumi/LIM017-md-links.git"
 	},
+	"bin": {
+		"md-links": "src/cli.js"
+	},
 	"author": "Jammie Hurtado <20160133@lamolina.edu.pe>",
 	"license": "ISC",
 	"bugs": {
