@@ -7,6 +7,8 @@
 - [3. Guía de uso](#3-guía-de-uso)
 - [4. Consideraciones generales](#4-diagrama-de-flujo)
 - [5. Construido con](#5-construido-con)
+- [6. Libraries](#6-libraries)
+- [7. Autor](#7-autor)
 ---
 ## 1. Definición del proyecto
 
@@ -50,7 +52,7 @@ Y las opciones son las siguientes:
 ## 5. 🛠 Skills
 _Javascript, Nodejs_
 ## 6. Libraries
-Fetch, Chalk, File system, Path.
-### 🚀 Autor
+_Fetch, Chalk, File system, Path._
+## 7. 🚀 Autor
 - [@JammieHurtado](https://github.com/Emmigumi)
 
