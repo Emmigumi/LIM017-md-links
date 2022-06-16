@@ -29,7 +29,7 @@ $ npm i md-links-jammie
 A travéz de la **terminal**
 
 ```bash
-node src/cli.js <path-to-file> [options]
+md-links <path-to-file> [options]
 ```
 Donde la ruta ingresada puede ser **relativa** o **absoluta**.
 Y las opciones son las siguientes:

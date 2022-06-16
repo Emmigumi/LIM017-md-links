@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+/* eslint-disable no-unused-expressions */
+import {mdLinks} from './src/index.js';
+import chalk from 'chalk';
+
+const inputsTerminal = process.argv;
+const inputArgPath = inputsTerminal[2];
+const options = [inputsTerminal[3], inputsTerminal[4]];
+
+if(inputArgPath) {
+    if(inputsTerminal.length === 3){
+        mdLinks(inputArgPath, { validate: false, stats: false })
+        .then((res)=>{res.forEach((e)=>{
+            const answerCli = `${e.file} ${chalk.blue(e.href)} ${e.text}`;
+         return answerCli;
+    })})
+    .catch((err)=>console.log(err));
+    } else if (inputsTerminal.length === 4){
+        if (options.includes('--validate')){
+            mdLinks(inputArgPath, { validate: true, stats: false })
+            .then((res)=>{res.forEach((e)=>{
+              const answerCli = console.log(`${e.file} ${chalk.blue(e.href)} ${chalk.yellow(e.message)} ${chalk.magenta(e.status)}  ${e.text}`);
+            return answerCli;
+        })})
+        .catch((err)=>console.log(err));
+        } else if (inputsTerminal.length === 4){
+            if (options.includes('--stats')){
+                mdLinks(inputArgPath, { validate: false, stats: true })
+                .then((res)=>console.log(chalk.blueBright(res)))
+                .catch((err)=> console.log(chalk.red(err)));
+            }
+        } else {
+            console.log(chalk.red('Error: La opción ingresada no es válida. Opciones permitidas: --validate o --stats'));
+        }
+    } else if(inputsTerminal.length === 5 && options.includes('--validate') && options.includes('--stats')){
+        mdLinks(inputArgPath, { validate: true, stats: true })
+        .then((res)=>console.log(chalk.yellow(res)))
+        .catch((err)=> console.log(chalk.red(err)));
+    } else {
+        console.log(chalk.red('Error: La opción ingresada no es válida. Opciones permitidas: --validate o --stats'));
+    }
+} else {
+    console.log(chalk.red('Error: Debe ingresar una ruta. Vuelva a intentarlo'));
+}
